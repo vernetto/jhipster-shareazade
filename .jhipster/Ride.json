@@ -1,0 +1,58 @@
+{
+  "applications": ["shareazade"],
+  "changelogDate": "20230706012802",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "ride",
+  "fields": [
+    {
+      "fieldName": "rideDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "rideCityFrom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rideCityTo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rideType",
+      "fieldType": "RideType",
+      "fieldValues": "OFFER,REQUEST"
+    },
+    {
+      "fieldName": "rideComments",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Ride",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "userName",
+      "otherEntityName": "users",
+      "ownerSide": true,
+      "relationshipName": "rideUser",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "cityName",
+      "otherEntityName": "city",
+      "relationshipName": "rideCityFrom",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "cityName",
+      "otherEntityName": "city",
+      "relationshipName": "rideCityTo",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

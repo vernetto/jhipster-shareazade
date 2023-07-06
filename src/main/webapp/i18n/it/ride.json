@@ -1,0 +1,31 @@
+{
+  "shareazadeApp": {
+    "ride": {
+      "home": {
+        "title": "Rides",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Ride",
+        "createOrEditLabel": "Genera o modifica un Ride",
+        "notFound": "No Rides found"
+      },
+      "created": "&Egrave; stato generato un nuovo Ride con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Ride identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Ride con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Ride {{ id }}?"
+      },
+      "detail": {
+        "title": "Ride"
+      },
+      "id": "ID",
+      "rideDateTime": "Ride Date Time",
+      "rideCityFrom": "Ride City From",
+      "rideCityTo": "Ride City To",
+      "rideType": "Ride Type",
+      "rideComments": "Ride Comments",
+      "rideUser": "Ride User",
+      "rideCityFrom": "Ride City From",
+      "rideCityTo": "Ride City To"
+    }
+  }
+}

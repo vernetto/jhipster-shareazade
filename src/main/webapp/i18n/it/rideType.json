@@ -1,0 +1,9 @@
+{
+  "shareazadeApp": {
+    "RideType": {
+      "null": "",
+      "OFFER": "OFFER",
+      "REQUEST": "REQUEST"
+    }
+  }
+}

@@ -35,6 +35,7 @@ application {
       cacheProvider ehcache
       prodDatabaseType postgresql
   }
+    entities *
 }
 
 enum RideType {
