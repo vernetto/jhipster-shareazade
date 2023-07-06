@@ -1,12 +1,12 @@
-import ride from 'app/entities/ride/ride.reducer';
-import city from 'app/entities/city/city.reducer';
-import users from 'app/entities/users/users.reducer';
+import shareRide from 'app/entities/share-ride/share-ride.reducer';
+import shareCity from 'app/entities/share-city/share-city.reducer';
+import shareUser from 'app/entities/share-user/share-user.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 const entitiesReducers = {
-  ride,
-  city,
-  users,
+  shareRide,
+  shareCity,
+  shareUser,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
 };
 

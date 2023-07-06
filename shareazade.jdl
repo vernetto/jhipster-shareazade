@@ -53,19 +53,25 @@ enum UserStatus {
   SUSPENDED
 }
 
-entity Ride {
+enum ShareCountry {
+    CH,
+    IT,
+    FR,
+    DE
+}
+
+entity ShareRide {
   rideDateTime ZonedDateTime,
-  rideCityFrom String,
-  rideCityTo String,
   rideType RideType,
   rideComments TextBlob
 }
 
-entity City {
-  cityName String
+entity ShareCity {
+  cityName String,
+    cityCountry ShareCountry
 }
 
-entity Users {
+entity ShareUser {
   userName String,
   userEmail String,
   userRole UserRole,
@@ -73,16 +79,14 @@ entity Users {
   userStatus UserStatus
 }
 
-relationship OneToOne {
-  Ride{rideUser(userName)} to Users
-}
-
 relationship ManyToOne {
-  Ride{rideCityFrom(cityName)} to City,
-  Ride{rideCityTo(cityName)} to City
+  ShareRide{rideCityFrom(cityName)} to ShareCity,
+  ShareRide{rideCityTo(cityName)} to ShareCity,
+    ShareRide{rideUser(userName)} to ShareUser
+
 }
 
-paginate Ride, City, Users with pagination
+paginate ShareRide, ShareCity, ShareUser with pagination
 
 dto * with mapstruct
 

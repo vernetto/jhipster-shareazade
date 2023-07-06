@@ -1,0 +1,49 @@
+{
+  "applications": ["shareazade"],
+  "changelogDate": "20230706100052",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "share_ride",
+  "fields": [
+    {
+      "fieldName": "rideDateTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "rideType",
+      "fieldType": "RideType",
+      "fieldValues": "OFFER,REQUEST"
+    },
+    {
+      "fieldName": "rideComments",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ShareRide",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "cityName",
+      "otherEntityName": "shareCity",
+      "relationshipName": "rideCityFrom",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "cityName",
+      "otherEntityName": "shareCity",
+      "relationshipName": "rideCityTo",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "userName",
+      "otherEntityName": "shareUser",
+      "relationshipName": "rideUser",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

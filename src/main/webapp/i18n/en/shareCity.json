@@ -1,0 +1,25 @@
+{
+  "shareazadeApp": {
+    "shareCity": {
+      "home": {
+        "title": "Share Cities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Share City",
+        "createOrEditLabel": "Create or edit a Share City",
+        "notFound": "No Share Cities found"
+      },
+      "created": "A new Share City is created with identifier {{ param }}",
+      "updated": "A Share City is updated with identifier {{ param }}",
+      "deleted": "A Share City is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Share City {{ id }}?"
+      },
+      "detail": {
+        "title": "Share City"
+      },
+      "id": "ID",
+      "cityName": "City Name",
+      "cityCountry": "City Country"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "shareazadeApp": {
+    "shareRide": {
+      "home": {
+        "title": "ShareRides",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Share Ride",
+        "createOrEditLabel": "Genera o modifica un Share Ride",
+        "notFound": "No Share Rides found"
+      },
+      "created": "&Egrave; stato generato un nuovo Share Ride con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Share Ride identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Share Ride con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Share Ride {{ id }}?"
+      },
+      "detail": {
+        "title": "Share Ride"
+      },
+      "id": "ID",
+      "rideDateTime": "Ride Date Time",
+      "rideType": "Ride Type",
+      "rideComments": "Ride Comments",
+      "rideCityFrom": "Ride City From",
+      "rideCityTo": "Ride City To",
+      "rideUser": "Ride User"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "shareazadeApp": {
+    "shareCity": {
+      "home": {
+        "title": "ShareCities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Share City",
+        "createOrEditLabel": "Genera o modifica un Share City",
+        "notFound": "No Share Cities found"
+      },
+      "created": "&Egrave; stato generato un nuovo Share City con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Share City identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Share City con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Share City {{ id }}?"
+      },
+      "detail": {
+        "title": "Share City"
+      },
+      "id": "ID",
+      "cityName": "City Name",
+      "cityCountry": "City Country"
+    }
+  }
+}

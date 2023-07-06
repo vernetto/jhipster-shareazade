@@ -1,0 +1,11 @@
+id;ride_date_time;ride_type;ride_comments
+1;2023-07-05T10:48:18;REQUEST;../fake-data/blob/hipster.txt
+2;2023-07-06T01:04:10;REQUEST;../fake-data/blob/hipster.txt
+3;2023-07-06T07:34:52;REQUEST;../fake-data/blob/hipster.txt
+4;2023-07-06T00:12:14;REQUEST;../fake-data/blob/hipster.txt
+5;2023-07-05T21:17:56;OFFER;../fake-data/blob/hipster.txt
+6;2023-07-06T01:18:33;REQUEST;../fake-data/blob/hipster.txt
+7;2023-07-05T19:16:11;REQUEST;../fake-data/blob/hipster.txt
+8;2023-07-05T10:15:22;OFFER;../fake-data/blob/hipster.txt
+9;2023-07-06T01:30:06;OFFER;../fake-data/blob/hipster.txt
+10;2023-07-05T17:40:58;REQUEST;../fake-data/blob/hipster.txt

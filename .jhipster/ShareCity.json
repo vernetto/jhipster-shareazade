@@ -1,0 +1,25 @@
+{
+  "applications": ["shareazade"],
+  "changelogDate": "20230706100152",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "share_city",
+  "fields": [
+    {
+      "fieldName": "cityName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cityCountry",
+      "fieldType": "ShareCountry",
+      "fieldValues": "CH,IT,FR,DE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ShareCity",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

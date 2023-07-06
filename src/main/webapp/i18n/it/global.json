@@ -7,9 +7,9 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entità",
-        "ride": "Ride",
-        "city": "City",
-        "users": "Users",
+        "shareRide": "Share Ride",
+        "shareCity": "Share City",
+        "shareUser": "Share User",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
