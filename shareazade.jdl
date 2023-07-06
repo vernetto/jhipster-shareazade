@@ -1,0 +1,57 @@
+application {
+  config {
+    databaseType sql
+  }
+}
+
+enum RideType {
+  OFFER,
+  REQUEST
+}
+
+enum UserRole {
+  ADMIN,
+  USER
+}
+
+enum UserStatus {
+  ACTIVE,
+  SUSPENDED
+}
+
+entity Ride {
+  rideDateTime ZonedDateTime,
+  rideCityFrom String,
+  rideCityTo String,
+  rideType RideType,
+  rideComments TextBlob
+}
+
+entity City {
+  cityName String
+}
+
+entity Users {
+  userName String,
+  userEmail String,
+  userRole UserRole,
+  userPhone String,
+  userStatus UserStatus
+}
+
+relationship OneToOne {
+  Ride{rideUser(userName)} to Users
+}
+
+relationship ManyToOne {
+  Ride{rideCityFrom(cityName)} to City,
+  Ride{rideCityTo(cityName)} to City
+}
+
+paginate Ride, City, Users with pagination
+
+dto * with mapstruct
+
+service * with serviceClass
+
+filter *
