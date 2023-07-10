@@ -1,5 +1,6 @@
 package org.pierre.shareazade.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import javax.persistence.*;
@@ -38,13 +39,15 @@ public class ShareRide implements Serializable {
     private String rideComments;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
     private ShareCity rideCityFrom;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = { "user" }, allowSetters = true)
     private ShareCity rideCityTo;
 
     @ManyToOne
-    private ShareUser rideUser;
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -126,16 +129,16 @@ public class ShareRide implements Serializable {
         return this;
     }
 
-    public ShareUser getRideUser() {
-        return this.rideUser;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setRideUser(ShareUser shareUser) {
-        this.rideUser = shareUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public ShareRide rideUser(ShareUser shareUser) {
-        this.setRideUser(shareUser);
+    public ShareRide user(User user) {
+        this.setUser(user);
         return this;
     }
 

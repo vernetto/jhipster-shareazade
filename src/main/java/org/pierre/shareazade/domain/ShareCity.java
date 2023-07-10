@@ -30,6 +30,9 @@ public class ShareCity implements Serializable {
     @Column(name = "city_country")
     private ShareCountry cityCountry;
 
+    @ManyToOne
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -69,6 +72,19 @@ public class ShareCity implements Serializable {
 
     public void setCityCountry(ShareCountry cityCountry) {
         this.cityCountry = cityCountry;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ShareCity user(User user) {
+        this.setUser(user);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

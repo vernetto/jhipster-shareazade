@@ -19,7 +19,8 @@
       },
       "id": "ID",
       "cityName": "City Name",
-      "cityCountry": "City Country"
+      "cityCountry": "City Country",
+      "user": "User"
     }
   }
 }

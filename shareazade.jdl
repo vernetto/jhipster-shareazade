@@ -68,25 +68,17 @@ entity ShareRide {
 
 entity ShareCity {
   cityName String,
-    cityCountry ShareCountry
-}
-
-entity ShareUser {
-  userName String,
-  userEmail String,
-  userRole UserRole,
-  userPhone String,
-  userStatus UserStatus
+  cityCountry ShareCountry
 }
 
 relationship ManyToOne {
   ShareRide{rideCityFrom(cityName)} to ShareCity,
   ShareRide{rideCityTo(cityName)} to ShareCity,
-    ShareRide{rideUser(userName)} to ShareUser
-
+  ShareRide{user(login)} to User,
+  ShareCity{user(login)} to User
 }
 
-paginate ShareRide, ShareCity, ShareUser with pagination
+paginate ShareRide, ShareCity with pagination
 
 dto * with mapstruct
 

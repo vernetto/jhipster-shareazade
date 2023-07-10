@@ -1,6 +1,6 @@
 {
   "applications": ["shareazade"],
-  "changelogDate": "20230706100152",
+  "changelogDate": "20230710200537",
   "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "share_city",
@@ -20,6 +20,13 @@
   "name": "ShareCity",
   "pagination": "pagination",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "service": "serviceClass"
 }

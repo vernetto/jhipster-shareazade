@@ -50,7 +50,6 @@ public class CacheConfiguration {
             createCache(cm, org.pierre.shareazade.domain.User.class.getName() + ".authorities");
             createCache(cm, org.pierre.shareazade.domain.ShareRide.class.getName());
             createCache(cm, org.pierre.shareazade.domain.ShareCity.class.getName());
-            createCache(cm, org.pierre.shareazade.domain.ShareUser.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

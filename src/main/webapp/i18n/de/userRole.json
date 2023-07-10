@@ -1,9 +1,0 @@
-{
-  "shareazadeApp": {
-    "UserRole": {
-      "null": "",
-      "ADMIN": "ADMIN",
-      "USER": "USER"
-    }
-  }
-}

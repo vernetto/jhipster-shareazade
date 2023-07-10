@@ -2,24 +2,34 @@ package org.pierre.shareazade.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.pierre.shareazade.IntegrationTest;
 import org.pierre.shareazade.domain.ShareCity;
+import org.pierre.shareazade.domain.User;
 import org.pierre.shareazade.domain.enumeration.ShareCountry;
 import org.pierre.shareazade.repository.ShareCityRepository;
+import org.pierre.shareazade.service.ShareCityService;
 import org.pierre.shareazade.service.criteria.ShareCityCriteria;
 import org.pierre.shareazade.service.dto.ShareCityDTO;
 import org.pierre.shareazade.service.mapper.ShareCityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -29,6 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Integration tests for the {@link ShareCityResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class ShareCityResourceIT {
@@ -48,8 +59,14 @@ class ShareCityResourceIT {
     @Autowired
     private ShareCityRepository shareCityRepository;
 
+    @Mock
+    private ShareCityRepository shareCityRepositoryMock;
+
     @Autowired
     private ShareCityMapper shareCityMapper;
+
+    @Mock
+    private ShareCityService shareCityServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -137,6 +154,23 @@ class ShareCityResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(shareCity.getId().intValue())))
             .andExpect(jsonPath("$.[*].cityName").value(hasItem(DEFAULT_CITY_NAME)))
             .andExpect(jsonPath("$.[*].cityCountry").value(hasItem(DEFAULT_CITY_COUNTRY.toString())));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllShareCitiesWithEagerRelationshipsIsEnabled() throws Exception {
+        when(shareCityServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restShareCityMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(shareCityServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllShareCitiesWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(shareCityServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restShareCityMockMvc.perform(get(ENTITY_API_URL + "?eagerload=false")).andExpect(status().isOk());
+        verify(shareCityRepositoryMock, times(1)).findAll(any(Pageable.class));
     }
 
     @Test
@@ -275,6 +309,29 @@ class ShareCityResourceIT {
 
         // Get all the shareCityList where cityCountry is null
         defaultShareCityShouldNotBeFound("cityCountry.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllShareCitiesByUserIsEqualToSomething() throws Exception {
+        User user;
+        if (TestUtil.findAll(em, User.class).isEmpty()) {
+            shareCityRepository.saveAndFlush(shareCity);
+            user = UserResourceIT.createEntity(em);
+        } else {
+            user = TestUtil.findAll(em, User.class).get(0);
+        }
+        em.persist(user);
+        em.flush();
+        shareCity.setUser(user);
+        shareCityRepository.saveAndFlush(shareCity);
+        Long userId = user.getId();
+
+        // Get all the shareCityList where user equals to userId
+        defaultShareCityShouldBeFound("userId.equals=" + userId);
+
+        // Get all the shareCityList where user equals to (userId + 1)
+        defaultShareCityShouldNotBeFound("userId.equals=" + (userId + 1));
     }
 
     /**

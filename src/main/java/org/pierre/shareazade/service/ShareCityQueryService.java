@@ -96,6 +96,12 @@ public class ShareCityQueryService extends QueryService<ShareCity> {
             if (criteria.getCityCountry() != null) {
                 specification = specification.and(buildSpecification(criteria.getCityCountry(), ShareCity_.cityCountry));
             }
+            if (criteria.getUserId() != null) {
+                specification =
+                    specification.and(
+                        buildSpecification(criteria.getUserId(), root -> root.join(ShareCity_.user, JoinType.LEFT).get(User_.id))
+                    );
+            }
         }
         return specification;
     }

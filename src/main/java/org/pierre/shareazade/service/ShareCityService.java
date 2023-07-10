@@ -89,6 +89,15 @@ public class ShareCityService {
     }
 
     /**
+     * Get all the shareCities with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<ShareCityDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return shareCityRepository.findAllWithEagerRelationships(pageable).map(shareCityMapper::toDto);
+    }
+
+    /**
      * Get one shareCity by id.
      *
      * @param id the id of the entity.
@@ -97,7 +106,7 @@ public class ShareCityService {
     @Transactional(readOnly = true)
     public Optional<ShareCityDTO> findOne(Long id) {
         log.debug("Request to get ShareCity : {}", id);
-        return shareCityRepository.findById(id).map(shareCityMapper::toDto);
+        return shareCityRepository.findOneWithEagerRelationships(id).map(shareCityMapper::toDto);
     }
 
     /**

@@ -25,7 +25,7 @@ public class ShareRideDTO implements Serializable {
 
     private ShareCityDTO rideCityTo;
 
-    private ShareUserDTO rideUser;
+    private UserDTO user;
 
     public Long getId() {
         return id;
@@ -75,12 +75,12 @@ public class ShareRideDTO implements Serializable {
         this.rideCityTo = rideCityTo;
     }
 
-    public ShareUserDTO getRideUser() {
-        return rideUser;
+    public UserDTO getUser() {
+        return user;
     }
 
-    public void setRideUser(ShareUserDTO rideUser) {
-        this.rideUser = rideUser;
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 
     @Override
@@ -114,7 +114,7 @@ public class ShareRideDTO implements Serializable {
             ", rideComments='" + getRideComments() + "'" +
             ", rideCityFrom=" + getRideCityFrom() +
             ", rideCityTo=" + getRideCityTo() +
-            ", rideUser=" + getRideUser() +
+            ", user=" + getUser() +
             "}";
     }
 }

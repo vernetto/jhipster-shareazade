@@ -14,6 +14,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ShareRideRepository extends JpaRepository<ShareRide, Long>, JpaSpecificationExecutor<ShareRide> {
+    @Query("select shareRide from ShareRide shareRide where shareRide.user.login = ?#{principal.username}")
+    List<ShareRide> findByUserIsCurrentUser();
+
     default Optional<ShareRide> findOneWithEagerRelationships(Long id) {
         return this.findOneWithToOneRelationships(id);
     }
@@ -27,18 +30,18 @@ public interface ShareRideRepository extends JpaRepository<ShareRide, Long>, Jpa
     }
 
     @Query(
-        value = "select distinct shareRide from ShareRide shareRide left join fetch shareRide.rideCityFrom left join fetch shareRide.rideCityTo left join fetch shareRide.rideUser",
+        value = "select distinct shareRide from ShareRide shareRide left join fetch shareRide.rideCityFrom left join fetch shareRide.rideCityTo left join fetch shareRide.user",
         countQuery = "select count(distinct shareRide) from ShareRide shareRide"
     )
     Page<ShareRide> findAllWithToOneRelationships(Pageable pageable);
 
     @Query(
-        "select distinct shareRide from ShareRide shareRide left join fetch shareRide.rideCityFrom left join fetch shareRide.rideCityTo left join fetch shareRide.rideUser"
+        "select distinct shareRide from ShareRide shareRide left join fetch shareRide.rideCityFrom left join fetch shareRide.rideCityTo left join fetch shareRide.user"
     )
     List<ShareRide> findAllWithToOneRelationships();
 
     @Query(
-        "select shareRide from ShareRide shareRide left join fetch shareRide.rideCityFrom left join fetch shareRide.rideCityTo left join fetch shareRide.rideUser where shareRide.id =:id"
+        "select shareRide from ShareRide shareRide left join fetch shareRide.rideCityFrom left join fetch shareRide.rideCityTo left join fetch shareRide.user where shareRide.id =:id"
     )
     Optional<ShareRide> findOneWithToOneRelationships(@Param("id") Long id);
 }
