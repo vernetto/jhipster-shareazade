@@ -24,7 +24,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.pierre.shareazade.IntegrationTest;
 import org.pierre.shareazade.domain.ShareCity;
 import org.pierre.shareazade.domain.ShareRide;
-import org.pierre.shareazade.domain.ShareUser;
+import org.pierre.shareazade.domain.User;
 import org.pierre.shareazade.domain.enumeration.RideType;
 import org.pierre.shareazade.repository.ShareRideRepository;
 import org.pierre.shareazade.service.ShareRideService;
@@ -405,25 +405,25 @@ class ShareRideResourceIT {
 
     @Test
     @Transactional
-    void getAllShareRidesByRideUserIsEqualToSomething() throws Exception {
-        ShareUser rideUser;
-        if (TestUtil.findAll(em, ShareUser.class).isEmpty()) {
+    void getAllShareRidesByUserIsEqualToSomething() throws Exception {
+        User user;
+        if (TestUtil.findAll(em, User.class).isEmpty()) {
             shareRideRepository.saveAndFlush(shareRide);
-            rideUser = ShareUserResourceIT.createEntity(em);
+            user = UserResourceIT.createEntity(em);
         } else {
-            rideUser = TestUtil.findAll(em, ShareUser.class).get(0);
+            user = TestUtil.findAll(em, User.class).get(0);
         }
-        em.persist(rideUser);
+        em.persist(user);
         em.flush();
-        shareRide.setRideUser(rideUser);
+        shareRide.setUser(user);
         shareRideRepository.saveAndFlush(shareRide);
-        Long rideUserId = rideUser.getId();
+        Long userId = user.getId();
 
-        // Get all the shareRideList where rideUser equals to rideUserId
-        defaultShareRideShouldBeFound("rideUserId.equals=" + rideUserId);
+        // Get all the shareRideList where user equals to userId
+        defaultShareRideShouldBeFound("userId.equals=" + userId);
 
-        // Get all the shareRideList where rideUser equals to (rideUserId + 1)
-        defaultShareRideShouldNotBeFound("rideUserId.equals=" + (rideUserId + 1));
+        // Get all the shareRideList where user equals to (userId + 1)
+        defaultShareRideShouldNotBeFound("userId.equals=" + (userId + 1));
     }
 
     /**

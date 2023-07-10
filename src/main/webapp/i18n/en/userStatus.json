@@ -1,9 +1,0 @@
-{
-  "shareazadeApp": {
-    "UserStatus": {
-      "null": "",
-      "ACTIVE": "ACTIVE",
-      "SUSPENDED": "SUSPENDED"
-    }
-  }
-}

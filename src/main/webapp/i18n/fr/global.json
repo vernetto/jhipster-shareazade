@@ -9,7 +9,6 @@
         "main": "Entités",
         "shareRide": "Share Ride",
         "shareCity": "Share City",
-        "shareUser": "Share User",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -61,9 +61,9 @@ export const ShareRideDetail = () => {
           </dt>
           <dd>{shareRideEntity.rideCityTo ? shareRideEntity.rideCityTo.cityName : ''}</dd>
           <dt>
-            <Translate contentKey="shareazadeApp.shareRide.rideUser">Ride User</Translate>
+            <Translate contentKey="shareazadeApp.shareRide.user">User</Translate>
           </dt>
-          <dd>{shareRideEntity.rideUser ? shareRideEntity.rideUser.userName : ''}</dd>
+          <dd>{shareRideEntity.user ? shareRideEntity.user.login : ''}</dd>
         </dl>
         <Button tag={Link} to="/share-ride" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

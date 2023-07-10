@@ -44,6 +44,10 @@ export const ShareCityDetail = () => {
             </span>
           </dt>
           <dd>{shareCityEntity.cityCountry}</dd>
+          <dt>
+            <Translate contentKey="shareazadeApp.shareCity.user">User</Translate>
+          </dt>
+          <dd>{shareCityEntity.user ? shareCityEntity.user.login : ''}</dd>
         </dl>
         <Button tag={Link} to="/share-city" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

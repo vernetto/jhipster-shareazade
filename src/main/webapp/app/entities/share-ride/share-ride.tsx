@@ -121,7 +121,7 @@ export const ShareRide = () => {
                   <Translate contentKey="shareazadeApp.shareRide.rideCityTo">Ride City To</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  <Translate contentKey="shareazadeApp.shareRide.rideUser">Ride User</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="shareazadeApp.shareRide.user">User</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -151,9 +151,7 @@ export const ShareRide = () => {
                   <td>
                     {shareRide.rideCityTo ? <Link to={`/share-city/${shareRide.rideCityTo.id}`}>{shareRide.rideCityTo.cityName}</Link> : ''}
                   </td>
-                  <td>
-                    {shareRide.rideUser ? <Link to={`/share-user/${shareRide.rideUser.id}`}>{shareRide.rideUser.userName}</Link> : ''}
-                  </td>
+                  <td>{shareRide.user ? shareRide.user.login : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/share-ride/${shareRide.id}`} color="info" size="sm" data-cy="entityDetailsButton">

@@ -45,6 +45,8 @@ public class ShareCityCriteria implements Serializable, Criteria {
 
     private ShareCountryFilter cityCountry;
 
+    private LongFilter userId;
+
     private Boolean distinct;
 
     public ShareCityCriteria() {}
@@ -53,6 +55,7 @@ public class ShareCityCriteria implements Serializable, Criteria {
         this.id = other.id == null ? null : other.id.copy();
         this.cityName = other.cityName == null ? null : other.cityName.copy();
         this.cityCountry = other.cityCountry == null ? null : other.cityCountry.copy();
+        this.userId = other.userId == null ? null : other.userId.copy();
         this.distinct = other.distinct;
     }
 
@@ -106,6 +109,21 @@ public class ShareCityCriteria implements Serializable, Criteria {
         this.cityCountry = cityCountry;
     }
 
+    public LongFilter getUserId() {
+        return userId;
+    }
+
+    public LongFilter userId() {
+        if (userId == null) {
+            userId = new LongFilter();
+        }
+        return userId;
+    }
+
+    public void setUserId(LongFilter userId) {
+        this.userId = userId;
+    }
+
     public Boolean getDistinct() {
         return distinct;
     }
@@ -127,13 +145,14 @@ public class ShareCityCriteria implements Serializable, Criteria {
             Objects.equals(id, that.id) &&
             Objects.equals(cityName, that.cityName) &&
             Objects.equals(cityCountry, that.cityCountry) &&
+            Objects.equals(userId, that.userId) &&
             Objects.equals(distinct, that.distinct)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, cityName, cityCountry, distinct);
+        return Objects.hash(id, cityName, cityCountry, userId, distinct);
     }
 
     // prettier-ignore
@@ -143,6 +162,7 @@ public class ShareCityCriteria implements Serializable, Criteria {
             (id != null ? "id=" + id + ", " : "") +
             (cityName != null ? "cityName=" + cityName + ", " : "") +
             (cityCountry != null ? "cityCountry=" + cityCountry + ", " : "") +
+            (userId != null ? "userId=" + userId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

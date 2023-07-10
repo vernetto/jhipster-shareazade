@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity ShareRide.
     -->
-    <changeSet id="20230706100052-2" author="jhipster">
+    <changeSet id="20230710200437-2" author="jhipster">
 
         <addForeignKeyConstraint baseColumnNames="ride_city_from_id"
                                  baseTableName="share_ride"
@@ -20,10 +20,10 @@
                                  referencedColumnNames="id"
                                  referencedTableName="share_city"/>
 
-        <addForeignKeyConstraint baseColumnNames="ride_user_id"
+        <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="share_ride"
-                                 constraintName="fk_share_ride__ride_user_id"
+                                 constraintName="fk_share_ride__user_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="share_user"/>
+                                 referencedTableName="jhi_user"/>
     </changeSet>
 </databaseChangeLog>

@@ -114,13 +114,10 @@ public class ShareRideQueryService extends QueryService<ShareRide> {
                         )
                     );
             }
-            if (criteria.getRideUserId() != null) {
+            if (criteria.getUserId() != null) {
                 specification =
                     specification.and(
-                        buildSpecification(
-                            criteria.getRideUserId(),
-                            root -> root.join(ShareRide_.rideUser, JoinType.LEFT).get(ShareUser_.id)
-                        )
+                        buildSpecification(criteria.getUserId(), root -> root.join(ShareRide_.user, JoinType.LEFT).get(User_.id))
                     );
             }
         }

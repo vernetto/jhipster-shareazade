@@ -111,6 +111,9 @@ export const ShareCity = () => {
                 <th className="hand" onClick={sort('cityCountry')}>
                   <Translate contentKey="shareazadeApp.shareCity.cityCountry">City Country</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th>
+                  <Translate contentKey="shareazadeApp.shareCity.user">User</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -126,6 +129,7 @@ export const ShareCity = () => {
                   <td>
                     <Translate contentKey={`shareazadeApp.ShareCountry.${shareCity.cityCountry}`} />
                   </td>
+                  <td>{shareCity.user ? shareCity.user.login : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/share-city/${shareCity.id}`} color="info" size="sm" data-cy="entityDetailsButton">

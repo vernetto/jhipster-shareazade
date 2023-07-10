@@ -1,6 +1,6 @@
 {
   "applications": ["shareazade"],
-  "changelogDate": "20230706100052",
+  "changelogDate": "20230710200437",
   "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "share_ride",
@@ -39,9 +39,9 @@
       "relationshipType": "many-to-one"
     },
     {
-      "otherEntityField": "userName",
-      "otherEntityName": "shareUser",
-      "relationshipName": "rideUser",
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
       "relationshipType": "many-to-one"
     }
   ],

@@ -10,8 +10,8 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { IShareCity } from 'app/shared/model/share-city.model';
 import { getEntities as getShareCities } from 'app/entities/share-city/share-city.reducer';
-import { IShareUser } from 'app/shared/model/share-user.model';
-import { getEntities as getShareUsers } from 'app/entities/share-user/share-user.reducer';
+import { IUser } from 'app/shared/model/user.model';
+import { getUsers } from 'app/modules/administration/user-management/user-management.reducer';
 import { IShareRide } from 'app/shared/model/share-ride.model';
 import { RideType } from 'app/shared/model/enumerations/ride-type.model';
 import { getEntity, updateEntity, createEntity, reset } from './share-ride.reducer';
@@ -25,7 +25,7 @@ export const ShareRideUpdate = () => {
   const isNew = id === undefined;
 
   const shareCities = useAppSelector(state => state.shareCity.entities);
-  const shareUsers = useAppSelector(state => state.shareUser.entities);
+  const users = useAppSelector(state => state.userManagement.users);
   const shareRideEntity = useAppSelector(state => state.shareRide.entity);
   const loading = useAppSelector(state => state.shareRide.loading);
   const updating = useAppSelector(state => state.shareRide.updating);
@@ -44,7 +44,7 @@ export const ShareRideUpdate = () => {
     }
 
     dispatch(getShareCities({}));
-    dispatch(getShareUsers({}));
+    dispatch(getUsers({}));
   }, []);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export const ShareRideUpdate = () => {
       ...values,
       rideCityFrom: shareCities.find(it => it.id.toString() === values.rideCityFrom.toString()),
       rideCityTo: shareCities.find(it => it.id.toString() === values.rideCityTo.toString()),
-      rideUser: shareUsers.find(it => it.id.toString() === values.rideUser.toString()),
+      user: users.find(it => it.id.toString() === values.user.toString()),
     };
 
     if (isNew) {
@@ -82,7 +82,7 @@ export const ShareRideUpdate = () => {
           rideDateTime: convertDateTimeFromServer(shareRideEntity.rideDateTime),
           rideCityFrom: shareRideEntity?.rideCityFrom?.id,
           rideCityTo: shareRideEntity?.rideCityTo?.id,
-          rideUser: shareRideEntity?.rideUser?.id,
+          user: shareRideEntity?.user?.id,
         };
 
   return (
@@ -171,17 +171,17 @@ export const ShareRideUpdate = () => {
                   : null}
               </ValidatedField>
               <ValidatedField
-                id="share-ride-rideUser"
-                name="rideUser"
-                data-cy="rideUser"
-                label={translate('shareazadeApp.shareRide.rideUser')}
+                id="share-ride-user"
+                name="user"
+                data-cy="user"
+                label={translate('shareazadeApp.shareRide.user')}
                 type="select"
               >
                 <option value="" key="0" />
-                {shareUsers
-                  ? shareUsers.map(otherEntity => (
+                {users
+                  ? users.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.userName}
+                        {otherEntity.login}
                       </option>
                     ))
                   : null}

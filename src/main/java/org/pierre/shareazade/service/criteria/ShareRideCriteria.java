@@ -49,7 +49,7 @@ public class ShareRideCriteria implements Serializable, Criteria {
 
     private LongFilter rideCityToId;
 
-    private LongFilter rideUserId;
+    private LongFilter userId;
 
     private Boolean distinct;
 
@@ -61,7 +61,7 @@ public class ShareRideCriteria implements Serializable, Criteria {
         this.rideType = other.rideType == null ? null : other.rideType.copy();
         this.rideCityFromId = other.rideCityFromId == null ? null : other.rideCityFromId.copy();
         this.rideCityToId = other.rideCityToId == null ? null : other.rideCityToId.copy();
-        this.rideUserId = other.rideUserId == null ? null : other.rideUserId.copy();
+        this.userId = other.userId == null ? null : other.userId.copy();
         this.distinct = other.distinct;
     }
 
@@ -145,19 +145,19 @@ public class ShareRideCriteria implements Serializable, Criteria {
         this.rideCityToId = rideCityToId;
     }
 
-    public LongFilter getRideUserId() {
-        return rideUserId;
+    public LongFilter getUserId() {
+        return userId;
     }
 
-    public LongFilter rideUserId() {
-        if (rideUserId == null) {
-            rideUserId = new LongFilter();
+    public LongFilter userId() {
+        if (userId == null) {
+            userId = new LongFilter();
         }
-        return rideUserId;
+        return userId;
     }
 
-    public void setRideUserId(LongFilter rideUserId) {
-        this.rideUserId = rideUserId;
+    public void setUserId(LongFilter userId) {
+        this.userId = userId;
     }
 
     public Boolean getDistinct() {
@@ -183,14 +183,14 @@ public class ShareRideCriteria implements Serializable, Criteria {
             Objects.equals(rideType, that.rideType) &&
             Objects.equals(rideCityFromId, that.rideCityFromId) &&
             Objects.equals(rideCityToId, that.rideCityToId) &&
-            Objects.equals(rideUserId, that.rideUserId) &&
+            Objects.equals(userId, that.userId) &&
             Objects.equals(distinct, that.distinct)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, rideDateTime, rideType, rideCityFromId, rideCityToId, rideUserId, distinct);
+        return Objects.hash(id, rideDateTime, rideType, rideCityFromId, rideCityToId, userId, distinct);
     }
 
     // prettier-ignore
@@ -202,7 +202,7 @@ public class ShareRideCriteria implements Serializable, Criteria {
             (rideType != null ? "rideType=" + rideType + ", " : "") +
             (rideCityFromId != null ? "rideCityFromId=" + rideCityFromId + ", " : "") +
             (rideCityToId != null ? "rideCityToId=" + rideCityToId + ", " : "") +
-            (rideUserId != null ? "rideUserId=" + rideUserId + ", " : "") +
+            (userId != null ? "userId=" + userId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }
